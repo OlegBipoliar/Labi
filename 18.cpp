@@ -35,23 +35,34 @@ string nolik(string symbol) {
 
 }
 
-string a1 = "-", a2 = "-", a3 = "-", a4 = "-", a5 = "-", a6 = "-", a7 = "-", a8 = "-", a9 = "-";
+string a1 = "-", a2 = "-", a3 = "-", a4 = "-", a5 = "-", a6 = "-", a7 = "-", a8 = "-", a9 = "-",a10 = "-", a11 = "-", a12 = "-", a13 = "-", a14 = "-", a15 = "-", a16 = "-";
 
 string turn = fIrst;
 
 int WiN = 0;
-void chekWin() {
-	if (a1 == a2 && a2 == a3 && a1!= "-" || a1 == a4 && a4 == a7 && a1!="-" || a1 == a5 && a5 == a9 && a1!="0" || a2 == a4 && a4 == a6 && a2!="-" || a4 == a5 && a5 == a6 && a4!= "-" || a7 == a8 && a8 == a9 && a7!="-" || a7 == a5 && a5 == a3 && a7!="-")
+void chekWin3() {
+	if (a1 == a2 && a2 == a3 && a1!= "-" || a1 == a4 && a4 == a7 && a1!="-" || a1 == a5 && a5 == a9 && a1!="-" || a2 == a4 && a4 == a6 && a2!="-" || a4 == a5 && a5 == a6 && a4!= "-" || a7 == a8 && a8 == a9 && a7!="-" || a7 == a5 && a5 == a3 && a7!="-")
 		WiN = 1;
 }
 
+void chekWin4() {
+	if (a1 == a2 && a2 == a3 && a1 != "-" || a1 == a6 && a6 == a11 && a1 != "-" || a1 == a5 && a5 == a9 && a1 != "-" || a5 == a6 && a6 == a7 && a5 != "-" || a9 == a10 && a10 == a11 && a9 != "-" || a13 == a14 && a14 == a15 && a13 != "-"
+		|| a7 == a5 && a5 == a3 && a7 != "-" || a2 == a3 && a3 == a4 && a2 != "-" || a6 == a7 && a7 == a8 && a6 != "-" || a10 == a11 && a11 == a12 && a10 != "-" || a14 == a15 && a15 == a16 && a14 != "-" ||
+		a1 == a5 && a5 == a9 && a1 != "-" || a2 == a6 && a6 == a10 && a2 != "-" || a3 == a7 && a7 == a11 && a3 != "-" || a4 == a8 && a8 == a12 && a4 != "-" || a5 == a9 && a9 == a13 && a5 != "-" ||
+		a6 == a10 && a10 == a14 && a6 != "-" || a7 == a11 && a11 == a15 && a7 != "-" || a8 == a12 && a12 == a16 && a8 != "-"
+		|| a1 == a6 && a6 == a11 && a1 != "-" || a2 == a7 && a7 == a12 && a2 != "-" || a5 == a10 && a10 == a15 && a5 != "-" || a7 == a5 && a5 == a3 && a7 != "-" || a3 == a6 && a6 == a9 && a3 != "-" || a4 == a7 && a7 == a10 && a4 != "-" ||
+		a7 == a10 && a10 == a13 && a7 != "-" || a8 == a11 && a11 == a14 && a8 != "-" || a6 == a11 && a11 == a16 && a6!="-")
+		WiN = 1;
 
+}
 
 
 void tri()
 {
 
 	bool IsRanning = true;
+
+	
 	while (IsRanning)
 	{
 		string arr3[3][3]{ { a1,a2,a3},{a4,a5,a6},{a7,a8,a9}};
@@ -107,8 +118,9 @@ void tri()
 			a9 = turn;
 
 		}
-		chekWin();
-		cin.clear();
+
+		chekWin3();
+		
 		
 		if (WiN == 1) {
 			cout << "Победа";
@@ -122,7 +134,99 @@ void tri()
 
 }
 void chetiri() {
-	string arr4[4][4]{ {" "," "," "," "} ,{" "," "," "," "} ,{" "," "," "," "}, {" "," "," "," "} };
+
+	bool IsRanning = true;
+	while (IsRanning == true) {
+		string arr4[4][4]{ {a1,a2,a3,a4} ,{a5,a6,a7,a8} ,{a9,a10,a11,a12}, {a13,a14,a15,a16} };
+
+		for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 4; j++) {
+				cout << arr4[i][j];
+
+			}
+			cout << endl;
+		}
+
+		cout << "сообщите координаты вашего хода" << endl;
+
+		cin >> coorx;
+		cin >> coory;
+		coorx--; coory--;
+		while (coorx < 0 || coorx > 3 || coory < 0 || coory > 3 || arr4[coorx][coory] == "X" || arr4[coorx][coory] == "O")
+		{
+			oshipka();
+			cout << endl;
+			cin >> coorx;
+			cin >> coory;
+			coorx--; coory--;
+		}
+		if (coorx == 0 && coory == 0)
+		{
+			a1 = turn;
+		}
+		if (coorx == 0 && coory == 1)
+		{
+			a2 = turn;
+		}
+		if (coorx == 0 && coory == 2)
+		{
+			a3 = turn;
+		}
+		if (coorx == 0 && coory == 3) {
+			a4 = turn;
+		}
+		if (coorx == 1 && coory == 0) {
+			a5 = turn;
+		}
+		if (coorx == 1 && coory == 1) {
+			a6 = turn;
+		}
+		if (coorx == 1 && coory == 2) {
+			a7 = turn;
+		}
+		if (coorx == 1 && coory == 3) {
+			a8 = turn;
+		}
+		if (coorx == 2 && coory == 0) {   // что такое рациональный и нормальный код - не знаю
+			a9 = turn;
+		}
+		if (coorx == 2 && coory == 1) {
+			a10 = turn;
+		}
+		if (coorx == 2 && coory == 2) {
+			a11 = turn;
+		}
+		if (coorx == 2 && coory == 3) {
+			a12 = turn;
+		}
+		if (coorx == 3 && coory == 0) {
+			a13 = turn;
+		}
+		if (coorx == 3 && coory == 1) {
+			a14 = turn;
+		}
+		if (coorx == 3 && coory == 2) {
+			a15 = turn;
+		}
+		if (coorx == 3 && coory == 3) {
+			a16 = turn;
+		}
+		chekWin4();
+		cin.clear();
+
+		if (WiN == 1) {
+			cout << "Победа";
+			pauz();
+			IsRanning = false;
+		}
+
+
+
+		turn = nolik(turn);
+
+
+	}
+
 }
 void piat() {
 	string arr5[5][5]{ {" "," "," "," "," "},{" "," "," "," "," "},{" "," "," "," "," "},{" "," "," "," "," "},{" "," "," "," "," "} };
@@ -344,7 +448,7 @@ int main() {
 		{
 		case 1:
 		{
-			tri();
+			chetiri();
 			pauz();
 			break;
 		}
